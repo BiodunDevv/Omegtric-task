@@ -35,7 +35,7 @@ export function CourseHeader({
 
   return (
     <div
-      className="flex items-center justify-between px-8 py-6 text-white"
+      className="flex flex-col gap-4 px-5 py-5 text-white sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6"
       style={{
         borderRadius: "15px",
         background: "linear-gradient(90deg, #2D479C 0.07%, #101936 127.65%)",
@@ -46,12 +46,12 @@ export function CourseHeader({
         <p className="text-[11px] font-medium tracking-wide text-white/70">
           {activeCourse.institution}
         </p>
-        <h1 className="mt-0.5 text-xl font-bold tracking-tight">
+        <h1 className="mt-0.5 text-lg font-bold tracking-tight sm:text-xl">
           {activeCourse.name} ({activeCourse.shortName})
         </h1>
       </div>
 
-      <div className="relative" ref={dropdownRef}>
+      <div className="relative self-start sm:self-auto" ref={dropdownRef}>
         <Button
           variant="outline"
           size="sm"
@@ -65,7 +65,7 @@ export function CourseHeader({
         </Button>
 
         {open && (
-          <div className="absolute right-0 top-full z-50 mt-2 w-72 overflow-hidden rounded-lg border border-white/10 bg-white shadow-lg animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="absolute left-0 top-full z-50 mt-2 w-[calc(100vw-2.5rem)] max-w-72 overflow-hidden rounded-lg border border-white/10 bg-white shadow-lg animate-in fade-in slide-in-from-top-2 duration-200 sm:left-auto sm:right-0 sm:w-72">
             <div className="px-3 py-2 border-b border-slate-100">
               <p className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
                 Select a course

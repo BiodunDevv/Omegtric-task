@@ -7,7 +7,7 @@ interface ManageHeaderProps {
 
 export function ManageHeader({ courseName }: ManageHeaderProps) {
   return (
-    <div className="flex items-start justify-between">
+    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
       <div>
         <h2 className="text-base font-semibold text-foreground">
           Manage Modules
@@ -17,14 +17,18 @@ export function ManageHeader({ courseName }: ManageHeaderProps) {
           <span className="font-medium text-foreground">{courseName}</span>
         </p>
       </div>
-      <div className="flex items-center gap-3">
-        <Button variant="outline" size="sm" className="gap-2 text-[13px]">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <Button
+          variant="outline"
+          size="sm"
+          className="gap-2 text-[12px] sm:text-[13px]"
+        >
           <Award className="size-4" />
-          Manage Course Final Project
+          <span className="hidden sm:inline">Manage Course</span> Final Project
         </Button>
         <Button
           size="sm"
-          className="gap-2 text-[13px]"
+          className="gap-2 text-[12px] sm:text-[13px]"
           style={{
             background:
               "linear-gradient(90deg, #2D479C 0.07%, #101936 127.65%)",

@@ -1,19 +1,32 @@
-import { Bell, LogOut } from "lucide-react";
+import { Bell, LogOut, Menu } from "lucide-react";
 import Image from "next/image";
 
-export function Topbar() {
+interface TopbarProps {
+  onMenuToggle: () => void;
+}
+
+export function Topbar({ onMenuToggle }: TopbarProps) {
   return (
-    <header className="flex h-20 shrink-0 items-center justify-between border-b border-border bg-white px-6">
-      <div>
-        <h2 className="text-[15px] font-semibold text-foreground">
-          Welcome, Mrs. Tola!
-        </h2>
-        <p className="text-xs text-muted-foreground">
-          Manage your organization operations, users and learning programs.
-        </p>
+    <header className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-white px-4 sm:h-20 sm:px-6">
+      <div className="flex items-center gap-3">
+        <button
+          onClick={onMenuToggle}
+          className="rounded-md p-2 text-muted-foreground hover:bg-muted lg:hidden"
+          aria-label="Toggle sidebar"
+        >
+          <Menu className="size-5" />
+        </button>
+        <div>
+          <h2 className="text-sm font-semibold text-foreground sm:text-[15px]">
+            Welcome, Mrs. Tola!
+          </h2>
+          <p className="hidden text-xs text-muted-foreground sm:block">
+            Manage your organization operations, users and learning programs.
+          </p>
+        </div>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <button className="relative rounded-full p-2 text-muted-foreground hover:bg-muted">
           <Bell className="size-5" />
           <span className="absolute right-2 top-2 size-2 rounded-full bg-red-500" />
@@ -28,7 +41,7 @@ export function Topbar() {
               className="object-cover"
             />
           </div>
-          <div>
+          <div className="hidden sm:block">
             <p className="text-sm font-medium text-foreground leading-tight">
               Mrs. Tola
             </p>
@@ -39,7 +52,7 @@ export function Topbar() {
         </div>
 
         <button className="rounded-full p-2 text-muted-foreground hover:bg-muted">
-          <LogOut className="size-[18px]" />
+          <LogOut className="size-4.5" />
         </button>
       </div>
     </header>

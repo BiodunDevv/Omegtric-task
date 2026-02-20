@@ -47,6 +47,13 @@
   --color-navy: #233673;
   --color-navy-light: #2e4a8f;
   --color-page-bg: #f5f7fa;
+  --color-accent-blue: #1a41bf;
+  --color-sidebar-active: #599dcf;
+  --color-success: #09b223;
+  --color-success-bg: #bce5c345;
+  --color-success-bg-solid: #eaffef;
+  --color-input-bg: #ebebeb;
+  --color-card-bg: #f9f9f9;
 }
 
 :root {

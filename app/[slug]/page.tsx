@@ -17,8 +17,8 @@ export default async function PlaceholderPage({
     .join(" ");
 
   return (
-    <div className="flex h-full flex-col items-center justify-center p-6">
-      <Card className="max-w-lg w-full px-10 py-14 text-center border-none shadow-none bg-transparent">
+    <div className="flex h-full flex-col items-center justify-center p-4 sm:p-6">
+      <Card className="max-w-lg w-full px-6 py-10 text-center border-none shadow-none bg-transparent sm:px-10 sm:py-14">
         <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2D479C] to-[#101936]">
           <Construction className="size-7 text-white" />
         </div>
@@ -26,8 +26,8 @@ export default async function PlaceholderPage({
           {title}
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          This page is coming soon. The design for this section is currently
-          not available yet.
+          This page is coming soon. The design for this section is currently not
+          available yet.
         </p>
         <div className="mt-8 flex items-center justify-center gap-3">
           <Link href="/">

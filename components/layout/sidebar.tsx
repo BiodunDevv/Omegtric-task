@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { X } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
   LayoutDashboard,
@@ -34,12 +35,21 @@ const navItems: NavItem[] = [
   { label: "Settings", href: "/settings", icon: Settings },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="flex h-screen w-[240px] shrink-0 flex-col bg-white border-r border-border">
-      <div className="flex h-20 justify-center items-center px-5 border-b border-border">
+    <aside
+      className={`fixed inset-y-0 left-0 z-50 flex h-screen w-60 shrink-0 flex-col bg-white border-r border-border transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
+      <div className="flex h-20 items-center justify-between lg:justify-center px-5 border-b border-border">
         <Image
           src="/logo.svg"
           alt="SkillsBridge"
@@ -47,9 +57,16 @@ export function Sidebar() {
           height={35}
           priority
         />
+        <button
+          onClick={onClose}
+          className="rounded-md p-1 text-muted-foreground hover:bg-muted lg:hidden"
+          aria-label="Close sidebar"
+        >
+          <X className="size-5" />
+        </button>
       </div>
 
-      <nav className="pt-6 flex flex-1 flex-col gap-0.5 px-3 bg-[#233673]">
+      <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3 pt-6 bg-navy">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
@@ -58,13 +75,14 @@ export function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-colors ${
                 isActive
-                  ? "bg-[#599DCF] text-white"
-                  : "text-[#475569] hover:bg-slate-100 hover:text-foreground text-white"
+                  ? "bg-sidebar-active text-white"
+                  : "text-white/80 hover:bg-white/10 hover:text-white"
               }`}
             >
-              <Icon className="size-[18px]" />
+              <Icon className="size-4.5" />
               {item.label}
             </Link>
           );
